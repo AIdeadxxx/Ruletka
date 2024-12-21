@@ -26,12 +26,12 @@ class Game:
         
             # Загружаем изображение для списка (50x50)
             img = Image.open(self.image_path)
-            img = img.resize((50, 50), Image.Resampling.LANCZOS)
+            img = img.resize((100, 100), Image.Resampling.LANCZOS)
             self.thumbnail = ImageTk.PhotoImage(img)
             
             # Загружаем изображение для колеса (40x40)
             wheel_img = Image.open(self.image_path)
-            wheel_img = wheel_img.resize((40, 40), Image.Resampling.LANCZOS)
+            wheel_img = wheel_img.resize((80, 80), Image.Resampling.LANCZOS)
             self.wheel_thumbnail = ImageTk.PhotoImage(wheel_img)
         except Exception as e:
             print(f"Ошибка загрузки изображения: {e}")
@@ -135,10 +135,6 @@ def spin_wheel():
             
             # Добавляем изображение, если оно есть
             game = games[game_name]
-            if game.wheel_thumbnail:
-                img_x = 150 + 60 * math.cos(text_angle)
-                img_y = 150 - 60 * math.sin(text_angle)
-                wheel_canvas.create_image(img_x, img_y, image=game.wheel_thumbnail)
             
             # Добавляем текст
             wheel_canvas.create_text(
